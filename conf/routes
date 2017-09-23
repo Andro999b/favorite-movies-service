@@ -1,0 +1,15 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+
+GET     /                                           controllers.IndexController.index()
+GET     /favorites                                  controllers.FavoritesController.favoritesLists()
+POST    /favorites                                  controllers.FavoritesController.createFavoritesList()
+GET     /favorites/:listId                          controllers.FavoritesController.favoritesList(listId)
+PUT     /favorites/:listId                          controllers.FavoritesController.updateFavoritesList(listId)
+DELETE  /favorites/:listId                          controllers.FavoritesController.deleteFavoritesList(listId)
+GET     /favorites/:listId/movies                   controllers.FavoritesController.favoritesListMovies(listId)
+POST    /favorites/:listId/movies                   controllers.FavoritesController.addMovieToFavoritesList(listId)
+DELETE  /favorites/:listId/movies/:movieId          controllers.FavoritesController.removeMovieFromFavoritesList(listId, movieId)
