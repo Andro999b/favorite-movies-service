@@ -1,0 +1,6 @@
+.idea/
+_/
+logs/
+project/
+sbt-dist/
+target/
