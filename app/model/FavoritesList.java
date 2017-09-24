@@ -1,6 +1,7 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -9,8 +10,12 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
+import static utils.JpaUtils.EMPTY_DELETE_TOKEN;
+
 @Entity
-@Where(clause = "deletedAt IS NULL")
+@ApiModel(value="FavoritesList")
+@Where(clause = "deleteToken = '" + EMPTY_DELETE_TOKEN + "'")
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"name", "deleteToken"}))
 public class FavoritesList {
 
     @Id
@@ -18,9 +23,7 @@ public class FavoritesList {
     private Long id;
 
     private String name;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date deletedAt;
+    private String deleteToken = EMPTY_DELETE_TOKEN;
 
     public void setId(Long id) {
         this.id = id;

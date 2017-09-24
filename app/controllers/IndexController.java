@@ -16,6 +16,6 @@ public class IndexController extends Controller {
                 ResourceRepresentation.empty()
                     .withLink(favorites());
 
-        return ok(HalUtils.toJson(representation));
+        return HalUtils.toJsonResult(OK, representation);
     }
 }

@@ -11,6 +11,7 @@ import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import static utils.JpaUtils.uniqueResult;
 
@@ -62,8 +63,9 @@ public class FavoritesRepositoryImpl implements FavoritesRepository {
     @Override
     public FavoritesList delete(FavoritesList favoritesList) {
         EntityManager em = jpaApi.em();
-        //alternative @SQLDelete(sql = "UPDATE FavoritesList SET deletedAt = CURRENT_TIMESTAMP() WHERE id=?")
-        em.createQuery("update FavoritesList set deletedAt = CURRENT_TIMESTAMP() where id=:id")
+        //alternative @SQLDelete(sql = "UPDATE FavoritesList SET deleteToken = ... WHERE id=?")
+        em.createQuery("update FavoritesList set deleteToken = :token where id=:id")
+                .setParameter("token", UUID.randomUUID().toString())
                 .setParameter("id", favoritesList.getId())
                 .executeUpdate();
 
