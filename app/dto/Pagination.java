@@ -1,8 +1,8 @@
 package dto;
 
 public class Pagination {
-    private int page;
-    private int pageSize;
+    private final int page;
+    private final int pageSize;
 
     public Pagination(int page, int pageSize) {
         this.page = page < 0 ? 1 : page;

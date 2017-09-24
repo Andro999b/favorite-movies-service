@@ -2,6 +2,7 @@ package model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -9,17 +10,21 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
+@ApiModel
 public class Movie {
     @Id
+    @ApiModelProperty(required = true)
     private Long id;
     private Integer voteCount;
     private Float voteAverage;
+    @ApiModelProperty(required = true)
     private String title;
     private Float popularity;
 
     @Column(length = Integer.MAX_VALUE)
     private String overview;
 
+    @ApiModelProperty(required = true)
     private Date releaseDate;
 
     @ManyToMany

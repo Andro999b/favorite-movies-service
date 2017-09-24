@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ErrorMessage {
-    private String message;
+    private final String message;
 
     @JsonCreator
     public ErrorMessage(@JsonProperty("message") String message) {

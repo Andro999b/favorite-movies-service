@@ -3,11 +3,11 @@ package dto;
 import java.util.Collection;
 
 public class Page<T> {
-    private int page;
-    private int pageSize;
-    private int totalPages;
-    private int totalResults;
-    private Collection<T> results;
+    private final int page;
+    private final int pageSize;
+    private final int totalPages;
+    private final int totalResults;
+    private final Collection<T> results;
 
     public Page(Pagination pagination, int totalResults, Collection<T> results) {
         this.page = pagination.getPage();
